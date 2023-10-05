@@ -1,0 +1,37 @@
+name: Build and Cache
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Restore the cache if available
+      - name: Restore Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            artifact-dir # Replace with your actual path
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/*.lock') }}
+
+      - name: Install Dependencies
+        run: |
+          # Your dependency installation commands
+          pip install numpy
+
+      # Save the cache for future runs
+      - name: Save Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            artifact-dir # Replace with your actual path
+          key: ${{ runner.os }}-dependencies-${{ hashFiles('**/*.lock') }}
+
+
