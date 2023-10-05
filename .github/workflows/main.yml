@@ -6,14 +6,16 @@ on:
       - main
       
 jobs:
-    build:
-      runs-on: ubuntu-latest
-  
-      steps:
-        # ... Other steps for building and generating artifacts ...
-  
-        - name: AUpload Artifacts
-          uses: actions/upload-artifact@v2
-          with:
-            name: Upload-Artifact
-            path: artifact-dir/
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+     
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifacts
+          path: artifact-dir/
