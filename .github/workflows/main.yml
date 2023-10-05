@@ -1,0 +1,19 @@
+name: Upload Artifacts
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+    build:
+      runs-on: ubuntu-latest
+  
+      steps:
+        # ... Other steps for building and generating artifacts ...
+  
+        - name: AUpload Artifacts
+          uses: actions/upload-artifact@v2
+          with:
+            name: Upload-Artifact
+            path: artifact-dir
