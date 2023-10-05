@@ -20,7 +20,6 @@ jobs:
           name: my-artifacts
           path: artifact-dir/
 
-      - name: List Directory Contents
-          run:|
-            ls -al artifact-dir/
+      - name: Print Hello World
+        run: ls
          
