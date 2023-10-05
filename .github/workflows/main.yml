@@ -30,10 +30,9 @@ jobs:
 
       - name: Push Docker Image to Docker Hub
         run: docker push insightiq/aswin-nginx:latest
-        # Replace 'my-node-app' with your image name/tag
-
-      - name: Upload Docker Image as Artifact
+      
+      - name: Upload Docker file as artifact
         uses: actions/upload-artifact@v2
         with:
-          name: docker-image
-          path: /var/lib/docker
+          name: Dockerfile
+          path: Dockerfile
