@@ -19,7 +19,7 @@ jobs:
           dockerfile: Dockerfile  # Replace with the path to your Dockerfile
 
       - name: Build Docker Image
-        run: docker build -t aswin-nginx:latest .
+        run: docker build -t insightiq/aswin-nginx:latest .
         # Replace 'my-node-app' with your desired image name/tag
 
       - name: Login to Docker Hub
@@ -29,7 +29,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker Image to Docker Hub
-        run: docker push aswin-nginx:latest
+        run: docker push insightiq/aswin-nginx:latest
         # Replace 'my-node-app' with your image name/tag
 
       - name: Upload Docker Image as Artifact
