@@ -14,11 +14,13 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Docker
-        uses: actions/setup-docker@v2
+        uses: docker/setup-buildx-action@v1
+        with:
+          dockerfile: Dockerfile  # Replace with the path to your Dockerfile
 
       - name: Build Docker Image
-        run: docker build -t aswin-nginxapp:latest .
-       
+        run: docker build -t aswin-nginx:latest .
+        # Replace 'my-node-app' with your desired image name/tag
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -27,8 +29,8 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker Image to Docker Hub
-        run: docker push aswin-nginxapp:latest
-       
+        run: docker push aswin-nginx:latest
+        # Replace 'my-node-app' with your image name/tag
 
       - name: Upload Docker Image as Artifact
         uses: actions/upload-artifact@v2
